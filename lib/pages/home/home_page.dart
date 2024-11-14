@@ -7,7 +7,83 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('기차 예매'),
       ),
-      body: Text('HomePage'),
+      backgroundColor: Colors.grey[200],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '출발역',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '선택',
+                        style: TextStyle(fontSize: 40),
+                      )
+                    ],
+                  ),
+                  Container(
+                    width: 1,
+                    height: 50,
+                    color: Colors.grey[400],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '도착역',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        '선택',
+                        style: TextStyle(fontSize: 40),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  print('좌석 선택');
+                },
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.purple,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    textStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                child: Text('좌석 선택'),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
