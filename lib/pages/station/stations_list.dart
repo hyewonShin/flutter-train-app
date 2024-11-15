@@ -21,7 +21,16 @@ class StationListPage extends StatelessWidget {
     return ListView.builder(
         itemCount: stationList.length,
         itemBuilder: (ctx, idx) {
-          return ListTile(title: Text(stationList[idx]));
+          return Container(
+            height: 50,
+            decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
+            child: ListTile(
+                title: Text(
+              stationList[idx],
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+          );
         });
   }
 
@@ -31,8 +40,6 @@ class StationListPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('출발역'),
         ),
-        body: Container(
-          child: stationListView(),
-        ));
+        body: stationListView());
   }
 }
