@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/seat_page.dart';
+import 'package:flutter_train_app/pages/station/stations_list.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -69,7 +71,14 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  print('좌석 선택');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SeatPage();
+                      },
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
