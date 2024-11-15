@@ -24,13 +24,13 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  isStart(context),
+                  isStart(context, '출발역'),
                   Container(
                     width: 1,
                     height: 50,
                     color: Colors.grey[400],
                   ),
-                  isStart(context),
+                  isStart(context, '도착역'),
                 ],
               ),
             ),
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  GestureDetector isStart(BuildContext context) {
+  GestureDetector isStart(BuildContext context, title) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '출발역',
+            title,
             style: TextStyle(
                 fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
           ),
