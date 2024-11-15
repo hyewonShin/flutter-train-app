@@ -30,12 +30,8 @@ class StationListPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('출발역'),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () {},
-          ),
         ),
-        body: Expanded(
+        body: Container(
           child: stationListView(),
         ));
   }
