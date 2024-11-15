@@ -24,43 +24,13 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '출발역',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '선택',
-                        style: TextStyle(fontSize: 40),
-                      )
-                    ],
-                  ),
+                  isStart(context),
                   Container(
                     width: 1,
                     height: 50,
                     color: Colors.grey[400],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '도착역',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '선택',
-                        style: TextStyle(fontSize: 40),
-                      )
-                    ],
-                  ),
+                  isStart(context),
                 ],
               ),
             ),
@@ -92,6 +62,35 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  GestureDetector isStart(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return StationListPage();
+            },
+          ),
+        );
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '출발역',
+            style: TextStyle(
+                fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '선택',
+            style: TextStyle(fontSize: 40),
+          )
+        ],
       ),
     );
   }
