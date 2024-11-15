@@ -10,19 +10,37 @@ class SeatPage extends StatelessWidget {
         body: Column(
           children: [
             PickedStation(),
-            IsPickExample(),
+            IsPickedExample(),
             RowTitle(),
-            Flexible(
-              child: ListView(
-                children: List.generate(
-                  20,
-                  (index) => RowSeat(),
-                ),
-              ),
-            ),
+            SeatList(),
             ReservationBtn()
           ],
         ));
+  }
+}
+
+class SeatList extends StatelessWidget {
+  const SeatList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: ListView(
+        children: List.generate(
+          20,
+          (index) => Column(
+            children: [
+              RowSeat(index: index + 1),
+              SizedBox(
+                height: 8,
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -63,7 +81,7 @@ class ReservationBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 40),
+      padding: const EdgeInsets.only(bottom: 50),
       child: SizedBox(
         width: 380,
         height: 60,
@@ -84,8 +102,8 @@ class ReservationBtn extends StatelessWidget {
   }
 }
 
-class IsPickExample extends StatelessWidget {
-  const IsPickExample({
+class IsPickedExample extends StatelessWidget {
+  const IsPickedExample({
     super.key,
   });
 
@@ -142,19 +160,23 @@ class RowTitle extends StatelessWidget {
         SizedBox(
           width: 50,
           height: 50,
-          child: Text(
-            'A',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'A',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ),
         SizedBox(
           width: 50,
           height: 50,
-          child: Text(
-            'B',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'B',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ),
         SizedBox(
@@ -164,19 +186,23 @@ class RowTitle extends StatelessWidget {
         SizedBox(
           width: 50,
           height: 50,
-          child: Text(
-            'C',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'C',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ),
         SizedBox(
           width: 50,
           height: 50,
-          child: Text(
-            'D',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'D',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
         ),
       ],
@@ -185,9 +211,9 @@ class RowTitle extends StatelessWidget {
 }
 
 class RowSeat extends StatelessWidget {
-  const RowSeat({
-    super.key,
-  });
+  final int index;
+
+  const RowSeat({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +230,7 @@ class RowSeat extends StatelessWidget {
           height: 50,
           child: Center(
             child: Text(
-              '1',
+              index.toString(),
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 18),
             ),
