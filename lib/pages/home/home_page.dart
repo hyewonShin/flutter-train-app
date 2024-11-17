@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? departStation;
   String? arrivalStation;
+
   void onDepartStationChanged(String station) {
     setState(() {
       departStation = station;
@@ -63,14 +64,18 @@ class _HomePageState extends State<HomePage> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SeatPage();
-                      },
-                    ),
-                  );
+                  if (departStation != null || arrivalStation != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SeatPage();
+                        },
+                      ),
+                    );
+                  } else {
+                    print('출발역과 도착역 모두 선택해주세요 !');
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
