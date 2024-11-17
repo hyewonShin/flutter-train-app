@@ -2,7 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/seat/seat_page.dart';
 import 'package:flutter_train_app/pages/station/stations_list.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String? departStation;
+  String? arrivalStation;
+  void onDepartStationChanged(String station) {
+    setState(() {
+      departStation = station;
+    });
+    print('departStation > $departStation');
+  }
+
+  void onArrivalStationChanged(String station) {
+    setState(() {
+      arrivalStation = station;
+    });
+    print('arrivalStation > $arrivalStation');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +45,13 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  isDepart(context, true),
+                  StationBox(context, true),
                   Container(
                     width: 1,
                     height: 50,
                     color: Colors.grey[400],
                   ),
-                  isDepart(context, false),
+                  StationBox(context, false),
                 ],
               ),
             ),
@@ -67,14 +88,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  GestureDetector isDepart(BuildContext context, startFlag) {
+  GestureDetector StationBox(BuildContext context, isDepart) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
-              return StationListPage();
+              return StationListPage(
+                isDepart: isDepart,
+                onChanged:
+                    isDepart ? onDepartStationChanged : onArrivalStationChanged,
+              );
             },
           ),
         );
@@ -83,12 +108,14 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            startFlag ? "출발역" : "도착역",
+            isDepart ? "출발역" : "도착역",
             style: TextStyle(
                 fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
           ),
           Text(
-            '선택',
+            (departStation == null || arrivalStation == null)
+                ? "선택"
+                : (isDepart ? departStation! : arrivalStation!),
             style: TextStyle(fontSize: 40),
           )
         ],

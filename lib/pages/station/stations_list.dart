@@ -3,6 +3,14 @@ import 'package:flutter/material.dart';
 // command + shift + A : 다크모드
 
 class StationListPage extends StatelessWidget {
+  StationListPage({
+    required this.isDepart,
+    required this.onChanged,
+  });
+
+  final bool isDepart;
+  final void Function(String newValue) onChanged;
+
   List<String> stationList = [
     "수서",
     "동탄",
@@ -21,15 +29,20 @@ class StationListPage extends StatelessWidget {
     return ListView.builder(
         itemCount: stationList.length,
         itemBuilder: (ctx, idx) {
-          return Container(
-            height: 50,
-            decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
-            child: ListTile(
-                title: Text(
-              stationList[idx],
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            )),
+          return GestureDetector(
+            onTap: () {
+              onChanged(stationList[idx]);
+            },
+            child: Container(
+              height: 50,
+              decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
+              child: ListTile(
+                  title: Text(
+                stationList[idx],
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              )),
+            ),
           );
         });
   }
@@ -38,7 +51,7 @@ class StationListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('출발역'),
+          title: Text((isDepart ? '출발역' : '도착역')),
         ),
         body: stationListView());
   }
