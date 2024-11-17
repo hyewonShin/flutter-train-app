@@ -5,6 +5,7 @@ class SeatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           title: Text('좌석 선택'),
         ),
         body: Column(
@@ -16,6 +17,35 @@ class SeatPage extends StatelessWidget {
             ReservationBtn()
           ],
         ));
+  }
+}
+
+class ReservationBtn extends StatelessWidget {
+  const ReservationBtn({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 50),
+      child: SizedBox(
+        width: 380,
+        height: 60,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.purple,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20))),
+          onPressed: () {},
+          child: Text(
+            '예매 하기',
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -69,35 +99,6 @@ class PickedStation extends StatelessWidget {
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.purple),
         ),
       ],
-    );
-  }
-}
-
-class ReservationBtn extends StatelessWidget {
-  const ReservationBtn({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 50),
-      child: SizedBox(
-        width: 380,
-        height: 60,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20))),
-          onPressed: () {},
-          child: Text(
-            '예매 하기',
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
     );
   }
 }
