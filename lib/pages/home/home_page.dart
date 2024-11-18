@@ -15,14 +15,12 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       departStation = station;
     });
-    print('departStation > $departStation');
   }
 
   void onArrivalStationChanged(String station) {
     setState(() {
       arrivalStation = station;
     });
-    print('arrivalStation > $arrivalStation');
   }
 
   @override
