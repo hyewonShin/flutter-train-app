@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SeatPage extends StatelessWidget {
+  final String? departStation;
+  final String? arrivalStation;
+
+  const SeatPage({
+    super.key,
+    required this.departStation,
+    required this.arrivalStation,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,7 +19,10 @@ class SeatPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            PickedStation(),
+            PickedStation(
+              departStation: departStation,
+              arrivalStation: arrivalStation,
+            ),
             IsPickedExample(),
             RowTitle(),
             SeatList(),
@@ -75,8 +87,13 @@ class SeatList extends StatelessWidget {
 }
 
 class PickedStation extends StatelessWidget {
+  final String? departStation;
+  final String? arrivalStation;
+
   const PickedStation({
     super.key,
+    required this.departStation,
+    required this.arrivalStation,
   });
 
   @override
@@ -85,7 +102,7 @@ class PickedStation extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
-          '수서',
+          departStation!,
           style: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.purple),
         ),
@@ -94,7 +111,7 @@ class PickedStation extends StatelessWidget {
           size: 30,
         ),
         Text(
-          '부산',
+          arrivalStation!,
           style: TextStyle(
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.purple),
         ),

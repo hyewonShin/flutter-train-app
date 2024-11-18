@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 // command + shift + A : 다크모드
 
 class StationListPage extends StatelessWidget {
+  final bool isDepart;
+  final void Function(String newValue) onChanged;
+
   StationListPage({
+    super.key,
     required this.isDepart,
     required this.onChanged,
   });
-
-  final bool isDepart;
-  final void Function(String newValue) onChanged;
 
   List<String> stationList = [
     "수서",
@@ -25,13 +26,14 @@ class StationListPage extends StatelessWidget {
     "부산",
   ];
 
-  Widget stationListView() {
+  Widget stationListView(BuildContext context) {
     return ListView.builder(
         itemCount: stationList.length,
         itemBuilder: (ctx, idx) {
           return GestureDetector(
             onTap: () {
               onChanged(stationList[idx]);
+              Navigator.pop(context);
             },
             child: Container(
               height: 50,
@@ -53,6 +55,6 @@ class StationListPage extends StatelessWidget {
         appBar: AppBar(
           title: Text((isDepart ? '출발역' : '도착역')),
         ),
-        body: stationListView());
+        body: stationListView(context));
   }
 }
