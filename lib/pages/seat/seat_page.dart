@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/home/home_page.dart';
 
 class SeatPage extends StatefulWidget {
   final String? departStation;
@@ -17,6 +19,8 @@ class SeatPage extends StatefulWidget {
 class _SeatPageState extends State<SeatPage> {
   String? selectedRow;
   int? selectedCol;
+  String? rowAlpha;
+  int? colNum;
 
   void onSelected(String rowAlpha, int colNum) {
     setState(() {
@@ -44,15 +48,28 @@ class _SeatPageState extends State<SeatPage> {
                 onSelected: onSelected,
                 selectedRow: selectedRow,
                 selectedCol: selectedCol),
-            ReservationBtn()
+            ReservationBtn(
+                rowAlpha: rowAlpha,
+                colNum: colNum,
+                selectedRow: selectedRow,
+                selectedCol: selectedCol)
           ],
         ));
   }
 }
 
 class ReservationBtn extends StatelessWidget {
+  final String? rowAlpha;
+  final int? colNum;
+  final String? selectedRow;
+  final int? selectedCol;
+
   const ReservationBtn({
     super.key,
+    required this.rowAlpha,
+    required this.colNum,
+    required this.selectedRow,
+    required this.selectedCol,
   });
 
   @override
@@ -67,7 +84,42 @@ class ReservationBtn extends StatelessWidget {
               backgroundColor: Colors.purple,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20))),
-          onPressed: () {},
+          onPressed: () {
+            if (selectedRow != null && selectedCol != null) {
+              showCupertinoDialog(
+                context: context,
+                builder: (context) {
+                  return CupertinoAlertDialog(
+                    title: Text('예매 하시겠습니까?'),
+                    content: Text('좌석 : $selectedRow-$selectedCol'),
+                    actions: [
+                      CupertinoDialogAction(
+                          isDefaultAction: true,
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('취소')),
+                      CupertinoDialogAction(
+                          isDestructiveAction: true,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return HomePage();
+                                },
+                              ),
+                            );
+                          },
+                          child: Text('확인'))
+                    ],
+                  );
+                },
+              );
+            } else {
+              print('선택된 자석이 없습니다');
+            }
+          },
           child: Text(
             '예매 하기',
             style: TextStyle(
