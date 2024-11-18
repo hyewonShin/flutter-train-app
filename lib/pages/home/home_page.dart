@@ -106,6 +106,8 @@ class _HomePageState extends State<HomePage> {
                 isDepart: isDepart,
                 onChanged:
                     isDepart ? onDepartStationChanged : onArrivalStationChanged,
+                departStation: departStation,
+                arrivalStation: arrivalStation,
               );
             },
           ),

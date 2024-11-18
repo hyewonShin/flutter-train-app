@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 class StationListPage extends StatelessWidget {
   final bool isDepart;
   final void Function(String newValue) onChanged;
+  final String? departStation;
+  final String? arrivalStation;
 
   StationListPage({
     super.key,
     required this.isDepart,
     required this.onChanged,
+    required this.departStation,
+    required this.arrivalStation,
   });
 
   List<String> stationList = [
@@ -27,12 +31,18 @@ class StationListPage extends StatelessWidget {
   ];
 
   Widget stationListView(BuildContext context) {
+    List<String> departList =
+        stationList.where((value) => value != arrivalStation).toList();
+
+    List<String> arrivalList =
+        stationList.where((value) => value != departStation).toList();
+
     return ListView.builder(
-        itemCount: stationList.length,
+        itemCount: isDepart ? departList.length : arrivalList.length,
         itemBuilder: (ctx, idx) {
           return GestureDetector(
             onTap: () {
-              onChanged(stationList[idx]);
+              onChanged(isDepart ? departList[idx] : arrivalList[idx]);
               Navigator.pop(context);
             },
             child: Container(
@@ -41,7 +51,7 @@ class StationListPage extends StatelessWidget {
                   border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
               child: ListTile(
                   title: Text(
-                stationList[idx],
+                isDepart ? departList[idx] : arrivalList[idx],
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               )),
             ),
