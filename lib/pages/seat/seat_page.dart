@@ -94,13 +94,13 @@ class ReservationBtn extends StatelessWidget {
                     content: Text('좌석 : $selectedRow-$selectedCol'),
                     actions: [
                       CupertinoDialogAction(
-                          isDefaultAction: true,
+                          isDestructiveAction: true,
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
                           child: Text('취소')),
                       CupertinoDialogAction(
-                          isDestructiveAction: true,
+                          isDefaultAction: true,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -407,14 +407,6 @@ class seat extends StatelessWidget {
                       ? Colors.purple
                       : Colors.grey[300]!,
                   borderRadius: BorderRadius.circular(8)),
-              child: Center(
-                  child: Text(
-                '$rowAlpha-$colNum',
-                style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              )),
             ),
           ),
         ),
