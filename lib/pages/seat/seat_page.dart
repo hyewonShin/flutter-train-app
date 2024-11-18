@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SeatPage extends StatelessWidget {
+class SeatPage extends StatefulWidget {
   final String? departStation;
   final String? arrivalStation;
 
@@ -9,6 +9,21 @@ class SeatPage extends StatelessWidget {
     required this.departStation,
     required this.arrivalStation,
   });
+
+  @override
+  State<SeatPage> createState() => _SeatPageState();
+}
+
+class _SeatPageState extends State<SeatPage> {
+  String? selectedRow;
+  int? selectedCol;
+
+  void onSelected(String rowAlpha, int colNum) {
+    setState(() {
+      selectedRow = rowAlpha;
+      selectedCol = colNum;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +35,15 @@ class SeatPage extends StatelessWidget {
         body: Column(
           children: [
             PickedStation(
-              departStation: departStation,
-              arrivalStation: arrivalStation,
+              departStation: widget.departStation,
+              arrivalStation: widget.arrivalStation,
             ),
             IsPickedExample(),
             RowTitle(),
-            SeatList(),
+            SeatList(
+                onSelected: onSelected,
+                selectedRow: selectedRow,
+                selectedCol: selectedCol),
             ReservationBtn()
           ],
         ));
@@ -62,8 +80,15 @@ class ReservationBtn extends StatelessWidget {
 }
 
 class SeatList extends StatelessWidget {
+  final void Function(String rowAlpha, int colNum) onSelected;
+  final String? selectedRow;
+  final int? selectedCol;
+
   const SeatList({
     super.key,
+    required this.onSelected,
+    this.selectedRow,
+    this.selectedCol,
   });
 
   @override
@@ -74,7 +99,11 @@ class SeatList extends StatelessWidget {
           20,
           (index) => Column(
             children: [
-              RowSeat(index: index + 1),
+              RowSeat(
+                  index: index + 1,
+                  onSelected: onSelected,
+                  selectedRow: selectedRow,
+                  selectedCol: selectedCol),
               SizedBox(
                 height: 8,
               )
@@ -230,19 +259,38 @@ class RowTitle extends StatelessWidget {
 
 class RowSeat extends StatelessWidget {
   final int index;
+  final void Function(String rowAlpha, int colNum) onSelected;
+  final String? selectedRow;
+  final int? selectedCol;
 
-  const RowSeat({super.key, required this.index});
+  const RowSeat({
+    super.key,
+    required this.index,
+    required this.onSelected,
+    this.selectedRow,
+    this.selectedCol,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        seat(),
+        seat(
+            rowAlpha: 'A',
+            colNum: index,
+            onSelected: onSelected,
+            selectedRow: selectedRow,
+            selectedCol: selectedCol),
         SizedBox(
           width: 4,
         ),
-        seat(),
+        seat(
+            rowAlpha: 'B',
+            colNum: index,
+            onSelected: onSelected,
+            selectedRow: selectedRow,
+            selectedCol: selectedCol),
         SizedBox(
           width: 50,
           height: 50,
@@ -254,32 +302,68 @@ class RowSeat extends StatelessWidget {
             ),
           ),
         ),
-        seat(),
+        seat(
+            rowAlpha: 'C',
+            colNum: index,
+            onSelected: onSelected,
+            selectedRow: selectedRow,
+            selectedCol: selectedCol),
         SizedBox(
           width: 4,
         ),
-        seat(),
+        seat(
+            rowAlpha: 'D',
+            colNum: index,
+            onSelected: onSelected,
+            selectedRow: selectedRow,
+            selectedCol: selectedCol),
       ],
     );
   }
 }
 
 class seat extends StatelessWidget {
+  final String? rowAlpha;
+  final int? colNum;
+  final String? selectedRow;
+  final int? selectedCol;
+  final void Function(String rowAlpha, int colNum) onSelected;
+
   const seat({
     super.key,
+    this.rowAlpha,
+    this.colNum,
+    required this.onSelected,
+    this.selectedRow,
+    this.selectedCol,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
-          width: 50,
-          height: 50,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-                color: Colors.grey[300]!,
-                borderRadius: BorderRadius.circular(8)),
+        GestureDetector(
+          onTap: () {
+            onSelected(rowAlpha!, colNum!);
+          },
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                  color: rowAlpha == selectedRow && colNum == selectedCol
+                      ? Colors.purple
+                      : Colors.grey[300]!,
+                  borderRadius: BorderRadius.circular(8)),
+              child: Center(
+                  child: Text(
+                '$rowAlpha-$colNum',
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              )),
+            ),
           ),
         ),
       ],

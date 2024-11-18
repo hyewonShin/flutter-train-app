@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
-                  if (departStation != null || arrivalStation != null) {
+                  if (departStation != null && arrivalStation != null) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
