@@ -120,9 +120,7 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
           ),
           Text(
-            (departStation == null || arrivalStation == null)
-                ? "선택"
-                : (isDepart ? departStation! : arrivalStation!),
+            (isDepart ? departStation : arrivalStation) ?? "선택",
             style: TextStyle(fontSize: 40),
           )
         ],
