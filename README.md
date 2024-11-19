@@ -1,4 +1,4 @@
-![화면-기록-2024-11-19-오후-10 23 39](https://github.com/user-attachments/assets/4461266b-3094-4676-8989-8981f1fe82a2)
+https://github.com/user-attachments/assets/b14cb6df-020d-45f1-ad45-7ae9bd7d00f7
 
 
 # 프로젝트 소개 
