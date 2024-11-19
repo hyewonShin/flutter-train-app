@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 
 class StationListPage extends StatelessWidget {
   final bool isDepart;
-  final void Function(String newValue) onChanged;
   final String? departStation;
   final String? arrivalStation;
 
   StationListPage({
     super.key,
     required this.isDepart,
-    required this.onChanged,
     required this.departStation,
     required this.arrivalStation,
   });
@@ -42,8 +40,11 @@ class StationListPage extends StatelessWidget {
         itemBuilder: (ctx, idx) {
           return GestureDetector(
             onTap: () {
-              onChanged(isDepart ? departList[idx] : arrivalList[idx]);
-              Navigator.pop(context);
+              Navigator.pop(
+                  context,
+                  isDepart
+                      ? [true, departList[idx]]
+                      : [false, arrivalList[idx]]);
             },
             child: Container(
               height: 50,

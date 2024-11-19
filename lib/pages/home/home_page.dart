@@ -10,16 +10,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? departStation;
   String? arrivalStation;
+  List? result;
 
-  void onDepartStationChanged(String station) {
+  void stationChanged(result) {
     setState(() {
-      departStation = station;
-    });
-  }
-
-  void onArrivalStationChanged(String station) {
-    setState(() {
-      arrivalStation = station;
+      result[0] ? departStation = result[1] : arrivalStation = result[1];
     });
   }
 
@@ -95,21 +90,20 @@ class _HomePageState extends State<HomePage> {
 
   GestureDetector StationBox(BuildContext context, isDepart) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
+      onTap: () async {
+        result = await Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
               return StationListPage(
                 isDepart: isDepart,
-                onChanged:
-                    isDepart ? onDepartStationChanged : onArrivalStationChanged,
                 departStation: departStation,
                 arrivalStation: arrivalStation,
               );
             },
           ),
         );
+        stationChanged(result);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
