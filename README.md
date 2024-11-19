@@ -1,7 +1,3 @@
-
-
-
-
 # 프로젝트 소개 
 Flutter로 제작된 기차 예매 서비스입니다 🚅
 <br/><br/>
@@ -11,9 +7,7 @@ Flutter로 제작된 기차 예매 서비스입니다 🚅
   <img src="https://github.com/user-attachments/assets/044178d5-4061-4731-beb6-2efcb9c37e26" alt="기차 예매 서비스 예시 2" style="width: 80%;" />
 </div>
 
-
 <br/><br/>
-
 
 # 개발기간
 2024.11.14~2024.11.19
@@ -58,12 +52,5 @@ flutter run
 ### 추가 
 - 출발역과 도착역을 스왑하는 기능
   
-<br/><br/>
-
-
-# 프로젝트 미리보기 
-![image](https://github.com/user-attachments/assets/e0a73397-cb86-49b9-9022-fd9ca8b094db)
--
-![image](https://github.com/user-attachments/assets/539ae3db-23f3-4f37-bdb7-8bfe39103047)
 
 
