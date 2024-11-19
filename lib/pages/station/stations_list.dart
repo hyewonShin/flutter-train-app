@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// command + shift + A : 다크모드
-
 class StationListPage extends StatelessWidget {
   final bool isDepart;
   final String? departStation;

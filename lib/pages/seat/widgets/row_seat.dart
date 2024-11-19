@@ -21,7 +21,7 @@ class RowSeat extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        seat(
+        Seat(
             rowAlpha: 'A',
             colNum: index,
             onSelected: onSelected,
@@ -30,7 +30,7 @@ class RowSeat extends StatelessWidget {
         SizedBox(
           width: 4,
         ),
-        seat(
+        Seat(
             rowAlpha: 'B',
             colNum: index,
             onSelected: onSelected,
@@ -49,7 +49,7 @@ class RowSeat extends StatelessWidget {
             ),
           ),
         ),
-        seat(
+        Seat(
             rowAlpha: 'C',
             colNum: index,
             onSelected: onSelected,
@@ -58,7 +58,7 @@ class RowSeat extends StatelessWidget {
         SizedBox(
           width: 4,
         ),
-        seat(
+        Seat(
             rowAlpha: 'D',
             colNum: index,
             onSelected: onSelected,
@@ -69,14 +69,14 @@ class RowSeat extends StatelessWidget {
   }
 }
 
-class seat extends StatelessWidget {
+class Seat extends StatelessWidget {
   final String? rowAlpha;
   final int? colNum;
   final String? selectedRow;
   final int? selectedCol;
   final void Function(String rowAlpha, int colNum) onSelected;
 
-  const seat({
+  const Seat({
     super.key,
     this.rowAlpha,
     this.colNum,
