@@ -7,6 +7,8 @@ class RowTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -16,7 +18,9 @@ class RowTitle extends StatelessWidget {
           child: Align(
             child: Text(
               'A',
-              style: TextStyle(fontSize: 18),
+              style: isDarkMode
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -26,7 +30,9 @@ class RowTitle extends StatelessWidget {
           child: Align(
             child: Text(
               'B',
-              style: TextStyle(fontSize: 18),
+              style: isDarkMode
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -40,7 +46,9 @@ class RowTitle extends StatelessWidget {
           child: Align(
             child: Text(
               'C',
-              style: TextStyle(fontSize: 18),
+              style: isDarkMode
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : TextStyle(fontSize: 18),
             ),
           ),
         ),
@@ -50,7 +58,9 @@ class RowTitle extends StatelessWidget {
           child: Align(
             child: Text(
               'D',
-              style: TextStyle(fontSize: 18),
+              style: isDarkMode
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : TextStyle(fontSize: 18),
             ),
           ),
         ),
