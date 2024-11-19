@@ -55,17 +55,20 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          changeStation();
-                        },
-                        child: Icon(
-                          Icons.compare_arrows,
-                          size: 30,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: GestureDetector(
+                          onTap: () {
+                            changeStation();
+                          },
+                          child: Icon(
+                            Icons.compare_arrows,
+                            size: 30,
+                          ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        padding: const EdgeInsets.only(bottom: 25),
                         child: Container(
                           width: 1,
                           height: 50,
