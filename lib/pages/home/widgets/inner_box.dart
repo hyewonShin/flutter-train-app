@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/pages/home/widgets/divider.dart';
+import 'package:flutter_train_app/pages/home/widgets/divider_line.dart';
 import 'package:flutter_train_app/pages/home/widgets/swap_icon.dart';
 import 'package:flutter_train_app/pages/station/stations_list.dart';
 

@@ -46,14 +46,8 @@ class ReservationBtn extends StatelessWidget {
                       CupertinoDialogAction(
                           isDefaultAction: true,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return HomePage();
-                                },
-                              ),
-                            );
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
                           },
                           child: Text('확인'))
                     ],
