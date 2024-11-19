@@ -1,8 +1,17 @@
-https://github.com/user-attachments/assets/b14cb6df-020d-45f1-ad45-7ae9bd7d00f7
+
+
 
 
 # 프로젝트 소개 
 Flutter로 제작된 기차 예매 서비스입니다 🚅
+<br/><br/>
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/6180607e-4d0e-4c44-afc6-9a6e64474630" alt="기차 예매 서비스 예시 1" style="width: 80%; margin-bottom: 20px;" />
+  <img src="https://github.com/user-attachments/assets/044178d5-4061-4731-beb6-2efcb9c37e26" alt="기차 예매 서비스 예시 2" style="width: 80%;" />
+</div>
+
+
 <br/><br/>
 
 
