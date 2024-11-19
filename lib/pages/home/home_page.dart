@@ -12,9 +12,17 @@ class _HomePageState extends State<HomePage> {
   String? arrivalStation;
   List? result;
 
-  void stationChanged(result) {
+  void setStation(result) {
     setState(() {
       result[0] ? departStation = result[1] : arrivalStation = result[1];
+    });
+  }
+
+  void changeStation() {
+    setState(() {
+      String? temp = departStation;
+      departStation = arrivalStation;
+      arrivalStation = temp;
     });
   }
 
@@ -44,10 +52,27 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   StationBox(context, true),
-                  Container(
-                    width: 1,
-                    height: 50,
-                    color: Colors.grey[400],
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          changeStation();
+                        },
+                        child: Icon(
+                          Icons.compare_arrows,
+                          size: 30,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Container(
+                          width: 1,
+                          height: 50,
+                          color: Colors.grey[400],
+                        ),
+                      ),
+                    ],
                   ),
                   StationBox(context, false),
                 ],
@@ -109,7 +134,7 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         );
-        stationChanged(result);
+        setStation(result);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
