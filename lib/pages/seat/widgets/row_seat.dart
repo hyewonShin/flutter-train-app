@@ -17,6 +17,8 @@ class RowSeat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -42,7 +44,9 @@ class RowSeat extends StatelessWidget {
             child: Text(
               index.toString(),
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18),
+              style: isDarkMode
+                  ? Theme.of(context).textTheme.labelMedium
+                  : TextStyle(fontSize: 18),
             ),
           ),
         ),
