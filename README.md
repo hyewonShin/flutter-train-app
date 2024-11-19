@@ -4,7 +4,8 @@ Flutter로 제작된 기차 예매 서비스입니다 🚅
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/6180607e-4d0e-4c44-afc6-9a6e64474630" alt="기차 예매 서비스 예시 1" style="width: 80%; margin-bottom: 20px;" />
-  <img src="https://github.com/user-attachments/assets/044178d5-4061-4731-beb6-2efcb9c37e26" alt="기차 예매 서비스 예시 2" style="width: 80%;" />
+  <img src="https://github.com/user-attachments/assets/79a53184-ec49-4d81-88aa-2ff156fa26a8" alt="기차 예매 서비스 예시 2" style="width: 80%;" />
+
 </div>
 
 <br/><br/>
