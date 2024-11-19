@@ -35,7 +35,9 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 200,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: isDarkMode
+                    ? const Color.fromARGB(255, 74, 70, 70)
+                    : Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -91,6 +93,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   GestureDetector StationBox(BuildContext context, isDepart) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return GestureDetector(
       onTap: () async {
         result = await Navigator.push(
@@ -117,7 +121,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             (isDepart ? departStation : arrivalStation) ?? "선택",
-            style: TextStyle(fontSize: 40),
+            style: isDarkMode
+                ? TextStyle(fontSize: 40, color: Colors.white)
+                : TextStyle(fontSize: 40, color: Colors.black),
           )
         ],
       ),

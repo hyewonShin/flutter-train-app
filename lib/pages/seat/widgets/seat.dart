@@ -18,6 +18,8 @@ class seat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Row(
       children: [
         GestureDetector(
@@ -31,7 +33,9 @@ class seat extends StatelessWidget {
               decoration: BoxDecoration(
                   color: rowAlpha == selectedRow && colNum == selectedCol
                       ? Colors.purple
-                      : Colors.grey[300]!,
+                      : isDarkMode
+                          ? const Color.fromARGB(255, 74, 70, 70)
+                          : Colors.grey[300]!,
                   borderRadius: BorderRadius.circular(8)),
             ),
           ),
