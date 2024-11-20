@@ -3,12 +3,12 @@ import 'package:flutter_train_app/pages/home/widgets/divider_line.dart';
 import 'package:flutter_train_app/pages/home/widgets/swap_icon.dart';
 import 'package:flutter_train_app/pages/station/stations_list.dart';
 
-Container innerBox(bool isDarkMode, BuildContext context, changeStation, result,
-    departStation, arrivalStation, setStation) {
+Container innerBox(
+    context, changeStation, result, departStation, arrivalStation, setStation) {
   return Container(
     height: 200,
     decoration: BoxDecoration(
-      color: isDarkMode ? const Color.fromARGB(255, 74, 70, 70) : Colors.white,
+      color: Theme.of(context).cardColor,
       borderRadius: BorderRadius.circular(20),
     ),
     child: Row(
@@ -32,8 +32,6 @@ Container innerBox(bool isDarkMode, BuildContext context, changeStation, result,
 
 GestureDetector stationBox(BuildContext context, isDepart, result,
     departStation, arrivalStation, setStation) {
-  bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
   return GestureDetector(
     onTap: () async {
       result = await Navigator.push(
@@ -58,12 +56,8 @@ GestureDetector stationBox(BuildContext context, isDepart, result,
           style: TextStyle(
               fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
         ),
-        Text(
-          (isDepart ? departStation : arrivalStation) ?? "선택",
-          style: isDarkMode
-              ? TextStyle(fontSize: 40, color: Colors.white)
-              : TextStyle(fontSize: 40, color: Colors.black),
-        )
+        Text((isDepart ? departStation : arrivalStation) ?? "선택",
+            style: Theme.of(context).textTheme.displaySmall)
       ],
     ),
   );

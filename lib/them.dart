@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 
-final lightTheme = ThemeData();
+final lightTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple),
+    scaffoldBackgroundColor: Colors.grey[200],
+    cardColor: Colors.white,
+    textTheme: TextTheme(
+        displaySmall: TextStyle(fontSize: 40, color: Colors.black),
+        bodyLarge: TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)));
 
 final darkTheme = ThemeData(
-    brightness: Brightness.dark, // 밝기 설정
-    scaffoldBackgroundColor: const Color.fromARGB(221, 42, 40, 40),
-    appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle(color: Colors.black),
-      labelMedium: TextStyle(color: Colors.white, fontSize: 16),
-      bodyLarge: TextStyle(
-          color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
-    ));
+  colorScheme: ColorScheme.fromSeed(
+    seedColor: Colors.purple,
+    brightness: Brightness.dark,
+  ),
+  cardColor: const Color.fromARGB(255, 74, 67, 67),
+  textTheme: const TextTheme(
+    displaySmall: TextStyle(fontSize: 40, color: Colors.white),
+    bodyLarge: TextStyle(
+        fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16),
+  ),
+);

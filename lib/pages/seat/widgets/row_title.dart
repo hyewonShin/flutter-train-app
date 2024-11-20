@@ -7,7 +7,8 @@ class RowTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    var rowTitleTextStyle =
+        Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -16,24 +17,14 @@ class RowTitle extends StatelessWidget {
           width: 50,
           height: 50,
           child: Align(
-            child: Text(
-              'A',
-              style: isDarkMode
-                  ? Theme.of(context).textTheme.bodyLarge
-                  : TextStyle(fontSize: 18),
-            ),
+            child: Text('A', style: rowTitleTextStyle),
           ),
         ),
         SizedBox(
           width: 50,
           height: 50,
           child: Align(
-            child: Text(
-              'B',
-              style: isDarkMode
-                  ? Theme.of(context).textTheme.bodyLarge
-                  : TextStyle(fontSize: 18),
-            ),
+            child: Text('B', style: rowTitleTextStyle),
           ),
         ),
         SizedBox(
@@ -44,24 +35,14 @@ class RowTitle extends StatelessWidget {
           width: 50,
           height: 50,
           child: Align(
-            child: Text(
-              'C',
-              style: isDarkMode
-                  ? Theme.of(context).textTheme.bodyLarge
-                  : TextStyle(fontSize: 18),
-            ),
+            child: Text('C', style: rowTitleTextStyle),
           ),
         ),
         SizedBox(
           width: 50,
           height: 50,
           child: Align(
-            child: Text(
-              'D',
-              style: isDarkMode
-                  ? Theme.of(context).textTheme.bodyLarge
-                  : TextStyle(fontSize: 18),
-            ),
+            child: Text('D', style: rowTitleTextStyle),
           ),
         ),
       ],

@@ -27,7 +27,6 @@ class StationListPage extends StatelessWidget {
   ];
 
   Widget stationListView(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     List<String> departList =
         stationList.where((value) => value != arrivalStation).toList();
 
@@ -50,12 +49,11 @@ class StationListPage extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border(bottom: BorderSide(color: Colors.grey[300]!))),
               child: ListTile(
-                  title: Text(
-                isDepart ? departList[idx] : arrivalList[idx],
-                style: isDarkMode
-                    ? Theme.of(context).textTheme.bodyLarge
-                    : TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              )),
+                  title: Text(isDepart ? departList[idx] : arrivalList[idx],
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(fontSize: 18))),
             ),
           );
         });

@@ -30,19 +30,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('기차 예매'),
       ),
-      backgroundColor: isDarkMode ? Colors.black87 : Colors.grey[200],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            innerBox(isDarkMode, context, changeStation, result, departStation,
+            innerBox(context, changeStation, result, departStation,
                 arrivalStation, setStation),
             SizedBox(
               height: 20,
