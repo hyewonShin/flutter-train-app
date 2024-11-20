@@ -1,5 +1,5 @@
 # 프로젝트 소개 
-Flutter로 제작된 기차 예매 서비스입니다 🚅
+Flutter로 개발된 기차 예매 서비스입니다 🚅
 <br/><br/>
 
 <div align="center">
