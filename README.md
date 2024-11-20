@@ -1,6 +1,6 @@
 # 프로젝트 소개 
 다크모드를 지원하는 기차 예매 서비스입니다 🚅
-<br/><br/>
+<br/><br/><br/>
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/6180607e-4d0e-4c44-afc6-9a6e64474630" alt="기차 예매 서비스 예시 1" style="width: 80%; margin-bottom: 20px;" />
