@@ -16,7 +16,7 @@ class RowSeat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    var rowAlphaTextStyle = Theme.of(context).textTheme.bodyLarge;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -43,9 +43,7 @@ class RowSeat extends StatelessWidget {
             child: Text(
               index.toString(),
               textAlign: TextAlign.center,
-              style: isDarkMode
-                  ? Theme.of(context).textTheme.labelMedium
-                  : TextStyle(fontSize: 18),
+              style: rowAlphaTextStyle,
             ),
           ),
         ),
@@ -87,8 +85,6 @@ class Seat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Row(
       children: [
         GestureDetector(
@@ -102,9 +98,7 @@ class Seat extends StatelessWidget {
               decoration: BoxDecoration(
                   color: rowAlpha == selectedRow && colNum == selectedCol
                       ? Colors.purple
-                      : isDarkMode
-                          ? const Color.fromARGB(255, 74, 70, 70)
-                          : Colors.grey[300]!,
+                      : Theme.of(context).disabledColor,
                   borderRadius: BorderRadius.circular(8)),
             ),
           ),

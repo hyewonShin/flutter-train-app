@@ -7,7 +7,7 @@ class IsPickedExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    var isPickedTextStyle = Theme.of(context).textTheme.bodyLarge;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
@@ -25,15 +25,7 @@ class IsPickedExample extends StatelessWidget {
           SizedBox(
             width: 4,
           ),
-          isDarkMode
-              ? Text(
-                  '선택됨',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                )
-              : Text('선택됨'),
+          Text('선택됨', style: isPickedTextStyle),
           SizedBox(
             width: 20,
           ),
@@ -48,15 +40,7 @@ class IsPickedExample extends StatelessWidget {
           SizedBox(
             width: 4,
           ),
-          isDarkMode
-              ? Text(
-                  '선택안됨',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16),
-                )
-              : Text('선택안됨'),
+          Text('선택안됨', style: isPickedTextStyle),
         ],
       ),
     );
